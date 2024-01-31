@@ -7,8 +7,15 @@ def contienda(CPais,x,y):
 def mostrar(CPais):
     for pais in CPais.get_paises():
         print(pais.get_ext())
+def limpia(CPais):
+    for pais in CPais.get_paises():
+        if pais.get_ext()<=0:
+            print ("El pais ",pais.get_id()," ha desaparecido")
+            CPais.remove_pais(pais)
+            
 prueba=CPais()
 prueba.crear_paises(2)
-mostrar(prueba)
-contienda(prueba,0,1)
-mostrar(prueba)
+while (len(prueba.get_paises())>1):
+    contienda(prueba,0,1)
+    mostrar(prueba)
+    limpia(prueba)

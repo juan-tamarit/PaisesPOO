@@ -36,3 +36,5 @@ class CPais():
                 found=True
             cont+=1
         return sol
+    def remove_pais(self, Pais):
+        self.paises.remove(Pais)
