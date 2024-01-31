@@ -1,8 +1,9 @@
 from CPais import CPais
-import random
+from Dado import Dado
 def contienda(CPais,x,y):
-    CPais.get_pais_by_id(x).atac(CPais.get_pais_by_id(y))
-    CPais.get_pais_by_id(y).atac(CPais.get_pais_by_id(x))
+    dado=Dado(10)
+    CPais.get_pais_by_id(x).atac(CPais.get_pais_by_id(y),dado.rol())
+    CPais.get_pais_by_id(y).atac(CPais.get_pais_by_id(x),dado.rol())
 def mostrar(CPais):
     for pais in CPais.get_paises():
         print(pais.get_ext())

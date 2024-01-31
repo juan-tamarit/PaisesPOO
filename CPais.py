@@ -31,8 +31,8 @@ class CPais():
             if self.get_paises()[cont].get_id()==id:
                 sol=self.get_paises()[cont]
                 found=True
-            elif self.get_paises()[len((self.get_paises())-1)-cont].get_id()==id:
-                sol=self.get_paises()[len((self.get_paises())-1)-cont]
+            elif self.get_paises()[len(self.get_paises())-1-cont].get_id()==id:
+                sol=self.get_paises()[len(self.get_paises())-1-cont]
                 found=True
             cont+=1
         return sol
