@@ -16,6 +16,11 @@ def limpia(CPais):
         if pais.get_ext()<=0:
             print ("El pais ",pais.get_id()," ha desaparecido")
             CPais.remove_pais(pais)
+def selec_objetivo(CPais,x):
+    obj_id=random.randint(0,len(prueba.get_paises())-1)
+    while(obj_id==x):
+        obj_id=random.randint(0,len(prueba.get_paises())-1)
+    return CPais.get_pais_by_id(obj_id)
 prueba=CPais()
 prueba.crear_paises(2)
 while (len(prueba.get_paises())>1):
