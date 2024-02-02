@@ -37,4 +37,18 @@ class CPais():
             cont+=1
         return sol
     def remove_pais(self, Pais):
+        """
+        Remove a country from the list of countries.
+
+        Parameters:
+        - pais (Pais): The country object to be removed from the list.
+
+        This method removes the specified country from the list of countries in CPais.
+        It uses the `remove` method, which eliminates the first occurrence of the
+        provided country object based on its value, not its index.
+
+        Note:
+        If there are multiple occurrences of the country object in the list,
+        only the first occurrence will be removed.
+        """
         self.paises.remove(Pais)
