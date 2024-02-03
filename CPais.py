@@ -52,3 +52,14 @@ class CPais():
         only the first occurrence will be removed.
         """
         self.paises.remove(Pais)
+    def get_num_paises(self):
+        """
+        Get the number of countries in the CPais object.
+
+        Returns:
+        - int: The total number of countries in the CPais object.
+
+        This method provides the count of countries currently present in the CPais object.
+        It uses the `len` function to determine the length of the internal list of countries.
+        """
+        return len(self.get_paises())

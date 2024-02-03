@@ -1,5 +1,6 @@
 #import
 import random
+import os
 #clases del proyecto
 from CPais import CPais
 from Dado import Dado
@@ -14,16 +15,18 @@ def mostrar(CPais):
 def limpia(CPais):
     for pais in CPais.get_paises():
         if pais.get_ext()<=0:
-            print ("El pais ",pais.get_id()," ha desaparecido")
             CPais.remove_pais(pais)
 def selec_objetivo(CPais,x):
-    obj_id=random.randint(0,len(CPais.get_paises())-1)
-    while(obj_id==x):
-        obj_id=random.randint(0,len(CPais.get_paises())-1)
-    return CPais.get_pais_by_id(obj_id)
+    obj=random.randint(0,CPais.get_num_paises()-1)
+    while(CPais.get_paises()[obj]==x):
+        obj=random.randint(0,CPais.get_num_paises()-1)
+    return CPais.get_paises()[obj]
+
+#loop jugable
 prueba=CPais()
-prueba.crear_paises(2)
+prueba.crear_paises(10)
 while (len(prueba.get_paises())>1):
-    contienda(prueba.get_pais_by_id(0),selec_objetivo(prueba,0))
+    for pais in prueba.get_paises():
+        contienda(pais,selec_objetivo(prueba,pais))
+        limpia(prueba)
     mostrar(prueba)
-    limpia(prueba)
