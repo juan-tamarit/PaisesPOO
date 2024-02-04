@@ -14,6 +14,8 @@ class Pais():
     - atac(other, value): Simulate an attack on another country, adjusting their
       external state based on the specified value.
     - heal(value): Increase the country's external state by the specified value.
+    - ayuda(self,other,value): Simulate sendig help to another country,adjusting their
+      external state based on the specified value.
     """
     def __init__(self,id):
         """
@@ -75,3 +77,22 @@ class Pais():
         - value (int): The amount by which to increase the country's external state.
         """
         self.set_ext(self.get_ext()+value)
+    def ayuda(self,other,value):
+        """
+        Simulate providing assistance to another country.
+
+        Parameters:
+        - other (Pais): The country object to which assistance is provided.
+        - value (int): The amount of assistance provided, affecting the external state.
+
+        This method simulates a scenario where the current country provides assistance to
+        another country. It adjusts the external state of both countries based on the
+        specified value. The receiving country's external state is increased, while the
+        assisting country's external state is decreased.
+
+        Parameters:
+        - other (Pais): The country object receiving assistance.
+        - value (int): The intensity of the assistance, affecting the external state.
+        """
+        other.set_ext(other.get_ext()+value)
+        self.set_ext(self.get_ext()-value)

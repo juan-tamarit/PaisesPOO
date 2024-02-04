@@ -21,7 +21,6 @@ def selec_objetivo(CPais,x):
     while(CPais.get_paises()[obj]==x):
         obj=random.randint(0,CPais.get_num_paises()-1)
     return CPais.get_paises()[obj]
-
 #loop jugable
 prueba=CPais()
 prueba.crear_paises(10)
