@@ -1,6 +1,5 @@
 #import
 import random
-import os
 #clases del proyecto
 from CPais import CPais
 from Dado import Dado
@@ -18,6 +17,7 @@ def enviar_ayuda(x,y):
 def mostrar(CPais):
     for pais in CPais.get_paises():
         print(pais.get_ext())
+    print("--------")
 def limpia(CPais):
     for pais in CPais.get_paises():
         if pais.get_ext()<=0:
@@ -29,7 +29,7 @@ def selec_objetivo(CPais,x):
     return CPais.get_paises()[obj]
 #loop jugable
 prueba=CPais()
-prueba.crear_paises(10)
+prueba.crear_paises(5)
 elec=Dado(3)
 while (len(prueba.get_paises())>1):
     for pais in prueba.get_paises():
