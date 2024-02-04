@@ -9,7 +9,7 @@ def contienda(x,y):
     x.atac(y,dado.rol())
     y.atac(x,dado.rol())
 def cura(x):
-    dado=Dado(20)
+    dado=Dado(5)
     x.heal(dado.rol())
 def enviar_ayuda(x,y):
     dado=Dado(10)
@@ -29,7 +29,7 @@ def selec_objetivo(CPais,x):
     return CPais.get_paises()[obj]
 #loop jugable
 prueba=CPais()
-prueba.crear_paises(5)
+prueba.crear_paises(10)
 elec=Dado(3)
 while (len(prueba.get_paises())>1):
     for pais in prueba.get_paises():
