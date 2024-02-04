@@ -37,7 +37,10 @@ while (len(prueba.get_paises())>1):
         if elec_aux==1:
             contienda(pais,selec_objetivo(prueba,pais))
         elif elec_aux==2:
-            cura(pais)
+            if pais.get_ext()<=80:
+                cura(pais)
+            else:
+                contienda(pais,selec_objetivo(prueba,pais))
         elif elec_aux==3:
             enviar_ayuda(pais,selec_objetivo(prueba,pais))
         limpia(prueba)
