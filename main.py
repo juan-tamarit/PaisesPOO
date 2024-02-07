@@ -1,7 +1,9 @@
 #import
 import random
+import tkinter as tk
 #clases del proyecto
-from CPais import CPais
+from CPais import CPais,Pais
+from Visor import Visor
 from Dado import Dado
 #fundiones del programa
 def contienda(x,y):
@@ -14,10 +16,6 @@ def cura(x):
 def enviar_ayuda(x,y):
     dado=Dado(10)
     x.ayuda(y,dado.rol())
-def mostrar(CPais):
-    for pais in CPais.get_paises():
-        print(pais.get_ext())
-    print("--------")
 def limpia(CPais):
     for pais in CPais.get_paises():
         if pais.get_ext()<=0:
@@ -27,21 +25,25 @@ def selec_objetivo(CPais,x):
     while(CPais.get_paises()[obj]==x):
         obj=random.randint(0,CPais.get_num_paises()-1)
     return CPais.get_paises()[obj]
-#loop jugable
-prueba=CPais()
-prueba.crear_paises(10)
-elec=Dado(3)
-while (len(prueba.get_paises())>1):
-    for pais in prueba.get_paises():
-        elec_aux=elec.rol()
+def ronda (CPais,Dado,root):
+    for pais in CPais.get_paises():
+        elec_aux=Dado.rol()
         if elec_aux==1:
-            contienda(pais,selec_objetivo(prueba,pais))
+            contienda(pais,selec_objetivo(CPais,pais))
         elif elec_aux==2:
             if pais.get_ext()<=80:
                 cura(pais)
             else:
-                contienda(pais,selec_objetivo(prueba,pais))
+                contienda(pais,selec_objetivo(CPais,pais))
         elif elec_aux==3:
-            enviar_ayuda(pais,selec_objetivo(prueba,pais))
-        limpia(prueba)
-    mostrar(prueba)
+            enviar_ayuda(pais,selec_objetivo(CPais,pais))
+        limpia(CPais)
+    root.after(1000,lambda: ronda(prueba,elec,root))
+#loop jugable
+prueba=CPais()
+prueba.crear_paises(3)
+root=tk.Tk()
+visor=Visor(root,prueba)
+elec=Dado(3)
+root.after(1000,lambda: ronda(prueba,elec,root))
+root.mainloop()
