@@ -2,8 +2,28 @@
 import tkinter as tk 
 #clases del proyecto
 from CPais import CPais, Pais
+#clase
 class Visor():
+    """
+    Provides a graphical interface to display information about countries in the game.
+
+    Attributes:
+    - master (tk.Tk): The main window of the GUI.
+    - CPais (CPais): An instance of CPais containing country information.
+
+    Methods:
+    - __init__(master, CPais): Initializes the Visor with the given master window and CPais instance.
+    - obt_info_paises(): Obtains formatted information about countries from CPais.
+    - actualiza_info(): Updates the displayed information periodically.
+    """
     def __init__(self, master, CPais):
+        """
+        Initializes the Visor with the given master window and CPais instance.
+
+        Parameters:
+        - master (tk.Tk): The main window of the GUI.
+        - CPais (CPais): An instance of CPais containing country information.
+        """
         self.master=master
         self.CPais=CPais
         master.title("PaisesPOO V0.1")
@@ -11,8 +31,17 @@ class Visor():
         self.label.pack()
         self.master.after(1000, self.actualiza_info)
     def obt_info_paises(self):
+        """
+        Obtains formatted information about countries from CPais.
+
+        Returns:
+        - str: Formatted information about countries.
+        """
         info_paises="\n".join([f"Pais ID:{pais.get_id()}, Ext:{pais.get_ext()}" for pais in self.CPais.get_paises()])
         return info_paises
     def actualiza_info(self):
+        """
+        Updates the displayed information periodically.
+        """
         self.label.config(text=self.obt_info_paises())
         self.master.after(1000, self.actualiza_info)
