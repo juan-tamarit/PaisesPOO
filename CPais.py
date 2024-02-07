@@ -1,14 +1,52 @@
+#clases del proyecto
 from Pais import Pais
+#clase
 class CPais():
+    """
+    Represents a collection of countries with methods to manage and retrieve country information.
+
+    Attributes:
+    - paises (list): A list to store instances of the Pais class.
+
+    Methods:
+    - __init__(): Initializes CPais with an empty list of countries.
+    - crear_paises(n): Creates and appends 'n' country instances to the list.
+    - get_paises(): Retrieves the list of countries.
+    - set_paises(paises): Sets the list of countries to the provided list.
+    - get_pais_by_id(id): Retrieves a country by its unique ID from the list of countries.
+    - remove_pais(Pais): Removes a country from the list of countries.
+    - get_num_paises(): Gets the number of countries in the CPais object.
+    """
     def __init__(self):
+        """
+        Initializes CPais with an empty list of countries.
+        """
         self.paises=[]
     def crear_paises(self,n):
+        """
+        Creates and appends 'n' country instances to the list.
+
+        Parameters:
+        - n (int): The number of country instances to create.
+        """
         for i in range(n):
             aux=Pais(i)
             self.get_paises().append(aux)
     def get_paises(self):
+        """
+        Retrieves the list of countries.
+
+        Returns:
+        - list: A list of country instances.
+        """
         return self.paises
     def set_paises(self, paises):
+        """
+        Sets the list of countries to the provided list.
+
+        Parameters:
+        - paises (list): A list of country instances.
+        """
         self.paises=paises
     def get_pais_by_id(self,id):
         """
