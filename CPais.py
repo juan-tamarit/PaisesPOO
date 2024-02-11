@@ -1,5 +1,7 @@
+import random
 #clases del proyecto
 from Pais import Pais
+from Dado import Dado
 #clase
 class CPais():
     """
@@ -101,3 +103,80 @@ class CPais():
         It uses the `len` function to determine the length of the internal list of countries.
         """
         return len(self.get_paises())
+    def contienda(self,x,y):
+        """
+        Simulates a conflict between two countries, adjusting their external states based on random dice rolls.
+
+        Parameters:
+        - x (Pais): The attacking country.
+        - y (Pais): The defending country.
+        """
+        dado=Dado(10)
+        x.atac(y,dado.rol())
+        y.atac(x,dado.rol())
+    def cura(self,x):
+        """
+        Simulates healing a country, increasing its external state based on a random dice roll.
+
+        Parameters:
+        - x (Pais): The country to be healed.
+        """
+        dado=Dado(5)
+        x.heal(dado.rol())
+    def enviar_ayuda(self,x,y):
+        """
+        Simulates sending aid from one country to another, adjusting their external states based on a random dice roll.
+
+        Parameters:
+        - x (Pais): The country sending aid.
+        - y (Pais): The country receiving aid.
+        """
+        dado=Dado(10)
+        x.ayuda(y,dado.rol())
+    def limpia(self):
+        """
+        Cleans up countries with external states less than or equal to 0 from the list.
+
+        Parameters:
+        - self (CPais): The collection of countries.
+        """
+        for pais in self.get_paises():
+            if pais.get_ext()<=0:
+                self.remove_pais(pais)
+    def selec_objetivo(self,x):
+        """
+        Selects a random country as a target, excluding the provided country.
+
+        Parameters:
+        - self (CPais): The collection of countries.
+        - x (Pais): The country to be excluded from selection.
+
+        Returns:
+        - Pais: The selected target country.
+        """
+        obj=random.randint(0,self.get_num_paises()-1)
+        while(self.get_paises()[obj]==x):
+            obj=random.randint(0,self.get_num_paises()-1)
+        return self.get_paises()[obj]
+    def ronda (self,Dado,root):
+        """
+        Simulates a game round, where each country in CPais takes a random action.
+
+        Parameters:
+        - self (CPais): The collection of countries.
+        - Dado (Dado): The dice used to determine actions.
+        - root (tk.Tk): The main window of the GUI.
+        """
+        for pais in self.get_paises():
+            elec_aux=Dado.rol()
+            if elec_aux==1:
+                self.contienda(pais,self.selec_objetivo(pais))
+            elif elec_aux==2:
+                if pais.get_ext()<=80:
+                    self.cura(pais)
+                else:
+                    self.contienda(pais,self.selec_objetivo(pais))
+            elif elec_aux==3:
+                self.enviar_ayuda(pais,self.selec_objetivo(pais))
+            self.limpia()
+        root.after(1000,lambda: self.ronda(Dado,root))
