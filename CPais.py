@@ -18,6 +18,12 @@ class CPais():
     - get_pais_by_id(id): Retrieves a country by its unique ID from the list of countries.
     - remove_pais(Pais): Removes a country from the list of countries.
     - get_num_paises(): Gets the number of countries in the CPais object.
+    - contienda(other): Simulates a conflict between two countries.
+    - cura(): Simulates healing a country.
+    - enviar_ayuda(other): Simulates sending aid from one country to another.
+    - limpia(): Cleans up countries with external states less than or equal to 0 from the list.
+    - selec_objetivo(): Selects a random country as a target, excluding the current country.
+    - ronda(Dado, root): Simulates a game round, where each country takes a random action.
     """
     def __init__(self):
         """
