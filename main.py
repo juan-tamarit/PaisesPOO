@@ -8,11 +8,12 @@ from Dado import Dado
 from SimulationManager import SimulationManager
 #loop jugable
 prueba=CPais()
-root=tk.Tk()
-visor=Visor(root,prueba)
-elec=Dado(3)
 sim= SimulationManager(prueba)
+root=tk.Tk()
+visor=Visor(root,sim.get_CPais())
+elec=Dado(3)
+
 # Schedule the first game round after a delay and start the GUI main loop
 sim.cargar()
-root.after(1000,lambda: prueba.ronda(elec,root))
+root.after(1000,lambda: sim.get_CPais().ronda(elec,root))
 root.mainloop()

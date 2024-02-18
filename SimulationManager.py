@@ -21,6 +21,10 @@ class SimulationManager:
         - CPais (CPais): The CPais object representing the collection of countries.
         """
         self.CPais=CPais
+    def get_CPais(self):
+        return self.CPais
+    def set_CPais(self,CPais):
+        self.CPais=CPais
     def guardar(self):
         """
         Saves the simulation state to a text file.
