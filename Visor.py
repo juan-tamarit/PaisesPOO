@@ -1,7 +1,7 @@
 #imports
 import tkinter as tk 
 #clases del proyecto
-from CPais import CPais, Pais
+from CPais import CPais, IPais
 #clase
 class Visor():
     """

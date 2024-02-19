@@ -1,6 +1,6 @@
 import random
 #clases del proyecto
-from Pais import Pais
+from IPais import IPais
 from Dado import Dado
 #clase
 class CPais():
@@ -38,7 +38,7 @@ class CPais():
         - n (int): The number of country instances to create.
         """
         for i in range(n):
-            aux=Pais(i)
+            aux=IPais(i)
             self.get_paises().append(aux)
     def get_paises(self):
         """
@@ -97,7 +97,7 @@ class CPais():
         If there are multiple occurrences of the country object in the list,
         only the first occurrence will be removed.
         """
-        self.paises.remove(Pais)
+        self.paises.remove(IPais)
     def get_num_paises(self):
         """
         Get the number of countries in the CPais object.
