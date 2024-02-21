@@ -10,7 +10,7 @@ from SimulationManager import SimulationManager
 prueba=CPais()
 sim= SimulationManager(prueba)
 root=tk.Tk()
-visor=Visor(root,sim.get_CPais())
+visor=Visor(root,sim)
 elec=Dado(3)
 # Schedule the first game round after a delay and start the GUI main loop
 sim.cargar()
