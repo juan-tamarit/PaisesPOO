@@ -1,9 +1,10 @@
 import random
 #clases del proyecto
 from IPais import IPais
+from ICPais import ICPais
 from Dado import Dado
 #clase
-class CPais():
+class CPais(ICPais):
     """
     Represents a collection of countries with methods to manage and retrieve country information.
 
