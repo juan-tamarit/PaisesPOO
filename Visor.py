@@ -32,6 +32,8 @@ class Visor():
         self.label.pack()
         self.master.after(1000, self.actualiza_info)
         self.boton_cargar=tk.Button(text="Cargar",command=self.ISim.cargar)
+        self.boton_guardar=tk.Button(text="Guardar",command=self.ISim.guardar)
+        self.boton_guardar.pack()
         self.boton_cargar.pack()
     def obt_info_paises(self):
         """
