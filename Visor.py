@@ -2,6 +2,7 @@
 import tkinter as tk 
 #clases del proyecto
 from CPais import CPais, IPais
+from ISim import ISim
 #clase
 class Visor():
     """
@@ -16,7 +17,7 @@ class Visor():
     - obt_info_paises(): Obtains formatted information about countries from CPais.
     - actualiza_info(): Updates the displayed information periodically.
     """
-    def __init__(self, master, CPais):
+    def __init__(self, master, ISim):
         """
         Initializes the Visor with the given master window and CPais instance.
 
@@ -25,12 +26,12 @@ class Visor():
         - CPais (CPais): An instance of CPais containing country information.
         """
         self.master=master
-        self.CPais=CPais
+        self.ISim=ISim
         master.title("PaisesPOO V0.1")
         self.label=tk.Label(master,text=self.obt_info_paises())
         self.label.pack()
         self.master.after(1000, self.actualiza_info)
-        self.boton_cargar=tk.Button(text="Cargar",command=ISim.cargar)
+        self.boton_cargar=tk.Button(text="Cargar",command=self.ISim.cargar)
         self.boton_cargar.pack()
     def obt_info_paises(self):
         """
@@ -39,7 +40,7 @@ class Visor():
         Returns:
         - str: Formatted information about countries.
         """
-        info_paises="\n".join([f"Pais ID:{pais.get_id()}, Ext:{pais.get_ext()}" for pais in self.ICPais.get_paises()])
+        info_paises="\n".join([f"Pais ID:{pais.get_id()}, Ext:{pais.get_ext()}" for pais in self.ISim.get_CPais().get_paises()])
         return info_paises
     def actualiza_info(self):
         """
