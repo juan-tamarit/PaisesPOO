@@ -1,4 +1,5 @@
-class Pais():
+from IPais import IPais
+class Pais(IPais):
     """
     Represents a country with an identifier and an external state (ext).
 
