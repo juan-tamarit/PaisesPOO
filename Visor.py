@@ -1,8 +1,7 @@
 #imports
 import tkinter as tk 
 #clases del proyecto
-from ICPais import ICPais
-from ISim import ISim
+from CPais import CPais, IPais
 #clase
 class Visor():
     """
@@ -17,7 +16,7 @@ class Visor():
     - obt_info_paises(): Obtains formatted information about countries from CPais.
     - actualiza_info(): Updates the displayed information periodically.
     """
-    def __init__(self, master, ISim):
+    def __init__(self, master, CPais):
         """
         Initializes the Visor with the given master window and CPais instance.
 
@@ -26,7 +25,7 @@ class Visor():
         - CPais (CPais): An instance of CPais containing country information.
         """
         self.master=master
-        self.ICPais=ISim.get_CPais()
+        self.CPais=CPais
         master.title("PaisesPOO V0.1")
         self.label=tk.Label(master,text=self.obt_info_paises())
         self.label.pack()
