@@ -1,6 +1,6 @@
 import random
 #clases del proyecto
-from IPais import IPais
+from Pais import Pais,IPais
 from ICPais import ICPais
 from Dado import Dado
 #clase
@@ -39,7 +39,7 @@ class CPais(ICPais):
         - n (int): The number of country instances to create.
         """
         for i in range(n):
-            aux=IPais(i)
+            aux=Pais(i)
             self.get_paises().append(aux)
     def get_paises(self):
         """
