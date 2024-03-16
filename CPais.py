@@ -98,7 +98,7 @@ class CPais(ICPais):
         If there are multiple occurrences of the country object in the list,
         only the first occurrence will be removed.
         """
-        self.paises.remove(IPais)
+        self.paises.remove(Pais)
     def get_num_paises(self):
         """
         Get the number of countries in the CPais object.
